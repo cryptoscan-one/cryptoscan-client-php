@@ -8,6 +8,7 @@
 
 namespace cryptoscan\factory;
 
+use cryptoscan\command\InvoiceConfirm;
 use cryptoscan\command\InvoiceCreate;
 use cryptoscan\command\WidgetCreate;
 use cryptoscan\contract\CurrencyRateListInterface;
@@ -19,6 +20,7 @@ use cryptoscan\contract\UserDetailInterface;
 use cryptoscan\contract\WidgetCreatedInterface;
 use cryptoscan\request\CurrencyRateListRequest;
 use cryptoscan\request\CurrencyRateStatusRequest;
+use cryptoscan\request\InvoiceConfirmRequest;
 use cryptoscan\request\InvoiceCreateRequest;
 use cryptoscan\request\InvoiceDetailRequest;
 use cryptoscan\request\InvoiceSearchRequest;
@@ -124,6 +126,28 @@ class HttpMessageFactory
     public static function invoiceSearch($query)
     {
         return new InvoiceSearchRequest($query);
+    }
+
+    /**
+     * Запрос на ручное подтверждение инвойса
+     *
+     * @param InvoiceConfirm $command
+     * @return HttpRequestInterface
+     */
+    public static function invoiceConfirm(InvoiceConfirm $command)
+    {
+        return new InvoiceConfirmRequest($command);
+    }
+
+    /**
+     * Информация по инвойсу
+     *
+     * @param ResponseInterface $response
+     * @return InvoiceDetailedInterface
+     */
+    public static function invoiceConfirmed(ResponseInterface $response)
+    {
+        return InvoiceDetailedResponse::instanceByResponse($response);
     }
 
     /**

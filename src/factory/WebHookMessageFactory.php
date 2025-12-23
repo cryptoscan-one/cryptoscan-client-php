@@ -9,8 +9,10 @@
 namespace cryptoscan\factory;
 
 use cryptoscan\exception\InvalidArgumentException;
+use cryptoscan\webhook\WebHookCancelledMessage;
 use cryptoscan\webhook\WebHookMessage;
 use cryptoscan\webhook\WebHookExpiredMessage;
+use cryptoscan\webhook\WebHookPaidManuallyMessage;
 use cryptoscan\webhook\WebHookPaidMessage;
 use cryptoscan\webhook\WebHookDataInterface;
 
@@ -22,6 +24,13 @@ use cryptoscan\webhook\WebHookDataInterface;
  */
 class WebHookMessageFactory
 {
+    const MESSAGES_MAP = [
+        WebHookMessage::EVENT_PAID => WebHookPaidMessage::class,
+        WebHookMessage::EVENT_EXPIRED => WebHookExpiredMessage::class,
+        WebHookMessage::EVENT_PAID_MANUALLY => WebHookPaidManuallyMessage::class,
+        WebHookMessage::EVENT_CANCELLED => WebHookCancelledMessage::class,
+    ];
+
     /**
      * WebHookFactory constructor.
      */
@@ -38,14 +47,13 @@ class WebHookMessageFactory
     public static function createByRequest(WebHookDataInterface $request)
     {
         $data = $request->getData();
+        $eventType = $request->getEventType();
 
-        switch ($request->getEventType()) {
-            case WebHookMessage::EVENT_PAID:
-                return new WebHookPaidMessage($data);
-            case WebHookMessage::EVENT_EXPIRED:
-                return new WebHookExpiredMessage($data);
-            default:
-                throw new InvalidArgumentException("EventType is not valid");
+        if (!in_array($eventType, WebHookMessage::EVENT_TYPE_LIST)) {
+            throw new InvalidArgumentException("EventType is not valid");
         }
+
+        $messageClass = self::MESSAGES_MAP[$eventType];
+        return new $messageClass($data);
     }
 }

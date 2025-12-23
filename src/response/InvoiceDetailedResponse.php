@@ -18,7 +18,7 @@ class InvoiceDetailedResponse extends BaseResponse implements InvoiceDetailedInt
     protected $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $wallet;
 
@@ -38,7 +38,7 @@ class InvoiceDetailedResponse extends BaseResponse implements InvoiceDetailedInt
     protected $requestedAmount;
 
     /**
-     * @var float
+     * @var float|null
      */
     protected $finalAmount;
 
@@ -81,6 +81,16 @@ class InvoiceDetailedResponse extends BaseResponse implements InvoiceDetailedInt
      * @var float|null
      */
     protected $sourceAmount;
+
+    /**
+     * @var string|null
+     */
+    protected $cryptocurrency;
+
+    /**
+     * @var string|null
+     */
+    protected $network;
 
     /**
      * @inheritDoc
@@ -192,5 +202,25 @@ class InvoiceDetailedResponse extends BaseResponse implements InvoiceDetailedInt
     public function getSourceAmount()
     {
         return $this->sourceAmount;
+    }
+
+    /**
+     * Криптовалюта оплаты
+     *
+     * @return string|null
+     */
+    public function getCryptocurrency()
+    {
+        return $this->cryptocurrency;
+    }
+
+    /**
+     * Сеть (blockchain) оплаты
+     *
+     * @return string|null
+     */
+    public function getNetwork()
+    {
+        return $this->network;
     }
 }

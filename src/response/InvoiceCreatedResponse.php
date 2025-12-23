@@ -33,6 +33,16 @@ class InvoiceCreatedResponse extends BaseResponse implements InvoiceCreatedInter
     protected $expireAt;
 
     /**
+     * @var string
+     */
+    protected $cryptocurrency;
+
+    /**
+     * @var string
+     */
+    protected $network;
+
+    /**
      * @return int
      */
     public function getId()
@@ -62,5 +72,25 @@ class InvoiceCreatedResponse extends BaseResponse implements InvoiceCreatedInter
     public function getExpireAt()
     {
         return $this->expireAt;
+    }
+
+    /**
+     * Криптовалюта оплаты
+     *
+     * @return string
+     */
+    public function getCryptocurrency()
+    {
+        return $this->cryptocurrency;
+    }
+
+    /**
+     * Сеть (blockchain) оплаты
+     *
+     * @return string
+     */
+    public function getNetwork()
+    {
+        return $this->network;
     }
 }

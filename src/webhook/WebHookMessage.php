@@ -19,11 +19,36 @@ use cryptoscan\exception\InvalidArgumentException;
  */
 abstract class WebHookMessage extends BaseObject
 {
-    /** @var string Оплачен */
+    /**
+     * Счёт оплачен
+     * @var string
+     */
     const EVENT_PAID = 'paid';
 
-    /** @var string Просрочен */
+    /**
+     * Счёт просрочен
+     * @var string
+     */
     const EVENT_EXPIRED = 'expired';
+
+    /**
+     * Оплата счёта подтверждена вручную
+     * @var string
+     */
+    const EVENT_PAID_MANUALLY = 'paid_manually';
+
+    /**
+     * Счёт отменен пользователем
+     * @var string
+     */
+    const EVENT_CANCELLED = 'cancelled';
+
+    const EVENT_TYPE_LIST = [
+        self::EVENT_PAID,
+        self::EVENT_EXPIRED,
+        self::EVENT_PAID_MANUALLY,
+        self::EVENT_CANCELLED,
+    ];
 
     /**
      * @var string
@@ -207,13 +232,7 @@ abstract class WebHookMessage extends BaseObject
         if (empty($value) === true) {
             throw new InvalidArgumentException("EventType can not to be empty");
         }
-
-        $typeList = [
-            self::EVENT_PAID,
-            self::EVENT_EXPIRED,
-        ];
-
-        if (in_array($value, $typeList) === false) {
+        if (in_array($value, self::EVENT_TYPE_LIST) === false) {
             throw new InvalidArgumentException("EventType is not valid");
         }
     }

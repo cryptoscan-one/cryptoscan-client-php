@@ -19,12 +19,12 @@ class WidgetCreatedResponse extends BaseResponse implements WidgetCreatedInterfa
     protected $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $finalAmount;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $wallet;
 
@@ -37,6 +37,16 @@ class WidgetCreatedResponse extends BaseResponse implements WidgetCreatedInterfa
      * @var string
      */
     protected $widgetUrl;
+
+    /**
+     * @var string|null
+     */
+    protected $cryptocurrency;
+
+    /**
+     * @var string|null
+     */
+    protected $network;
 
     /**
      * @inheritDoc
@@ -76,5 +86,25 @@ class WidgetCreatedResponse extends BaseResponse implements WidgetCreatedInterfa
     public function getWidgetUrl()
     {
         return $this->widgetUrl;
+    }
+
+    /**
+     * Криптовалюта оплаты
+     *
+     * @return string|null
+     */
+    public function getCryptocurrency()
+    {
+        return $this->cryptocurrency;
+    }
+
+    /**
+     * Сеть (blockchain) оплаты
+     *
+     * @return string|null
+     */
+    public function getNetwork()
+    {
+        return $this->network;
     }
 }

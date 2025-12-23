@@ -29,6 +29,20 @@ class InvoiceCreate
     private $currency;
 
     /**
+     * Криптовалюта, в которой должен быть произведён платёж
+     *
+     * @var string|null
+     */
+    private $cryptocurrency;
+
+    /**
+     * Сеть (blockchain), в которой должен быть проведён платёж
+     *
+     * @var string|null
+     */
+    private $network;
+
+    /**
      * Номер платежа в системе
      *
      * @var string
@@ -104,6 +118,46 @@ class InvoiceCreate
     public function setCurrency($currency)
     {
         $this->currency = $currency;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCryptocurrency()
+    {
+        return $this->cryptocurrency;
+    }
+
+    /**
+     * Задаёт значение для криптовалюты платежа
+     *
+     * @param string|null $cryptocurrency
+     * @return $this
+     */
+    public function setCryptocurrency($cryptocurrency)
+    {
+        $this->cryptocurrency = $cryptocurrency;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNetwork()
+    {
+        return $this->network;
+    }
+
+    /**
+     * Задаёт значение для сети, в которой должен быть произведён платёж
+     *
+     * @param string|null $network
+     * @return $this
+     */
+    public function setNetwork($network)
+    {
+        $this->network = $network;
         return $this;
     }
 }

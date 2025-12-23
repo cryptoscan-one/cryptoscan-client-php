@@ -22,7 +22,7 @@ https://cryptoscan.one/developer/index#auth
 
 ```php
 $publicKey = '...';
-$privateKey = '...'
+$privateKey = '...';
 
 // Аутентификация по приватному ключу
 $auth = AuthFactory::privateKey($publicKey, $privateKey);
@@ -47,7 +47,9 @@ $result = $client->invoiceCreate($command);
 $command = new InvoiceCreate(10, '123');
 $command
     ->setMetadata('Example text')
-    ->setCurrency("EUR");
+    ->setCurrency("EUR")
+    ->setCryptocurrency("USDT")
+    ->setNetwork("TRC-20");
 $result = $client->invoiceCreate($command);
 ```
 
@@ -66,7 +68,7 @@ $command
     ->setBackUrl('https://')
     ->setCancelUrl('https://')
     ->setWidgetDescription('Description')
-    ->setLang('ru-RU');
+    ->setLang('ru-RU')
     ->setCurrency("EUR");
 $result = $client->widgetCreate($command);
 ```
@@ -89,6 +91,18 @@ https://cryptoscan.one/developer/index#invoice-find
 ...
 $query = 123456;
 $result = $client->invoiceSearch($query);
+```
+
+### Ручное подтверждение оплаты Инвойса
+
+https://cryptoscan.one/developer/index#invoice-confirm
+
+```php
+...
+$invoiceId = 123;
+$transactionId = '59f89109ec64e9675c8bf34fc733779a9d562d1f37f94ada4fbe0d7db0b629e6';
+$command = new InvoiceConfirm($invoiceId, $transactionId);
+$result = $client->invoiceConfirm($command);
 ```
 
 ### Просмотр информации о пользователе
@@ -123,13 +137,14 @@ $result = $client->currencyRateStatus('EUR');
 
 | Модель                          | Экземпляр класса                   | 
 |---------------------------------|------------------------------------|
-| Созданный инвойс                | InvoiceCreatedInterface |
-| Детальная информация по инвойсу | InvoiceDetailedInterface |
-| Список инвойсов                 | InvoiceListInterface |
-| Информация по пользователю      | UserDetailInterface |
-| Созданный виджет                | WidgetCreatedInterface |
-| Поддерживаемые валюты           | CurrencyRateListInterface |
-| Проверка доступности валюты     | CurrencyRateStatusInterface |
+| Созданный инвойс                | InvoiceCreatedInterface            |
+| Созданный виджет                | WidgetCreatedInterface             |
+| Детальная информация по инвойсу | InvoiceDetailedInterface           |
+| Список инвойсов                 | InvoiceListInterface               |
+| Подтверждённый вручную инвойс   | InvoiceDetailedInterface           |
+| Информация по пользователю      | UserDetailInterface                |
+| Поддерживаемые валюты           | CurrencyRateListInterface          |
+| Проверка доступности валюты     | CurrencyRateStatusInterface        |
 
 Обработка ошибок
 -----
@@ -138,11 +153,11 @@ $result = $client->currencyRateStatus('EUR');
 
 | Модель                     | Экземпляр класса                   | 
 |----------------------------|------------------------------------|
-| Интерфейс всех исключений  | ClientExceptionInterface |
-| Ошибка передаваемых данных | InvalidDataException |
-| Не корректные данные       | InvalidArgumentException |
-| Ошибка авторизации         | AuthFailureException |
-| Остальные ошибки           | ClientFailureException |
+| Интерфейс всех исключений  | ClientExceptionInterface           |
+| Ошибка передаваемых данных | InvalidDataException               |
+| Не корректные данные       | InvalidArgumentException           |
+| Ошибка авторизации         | AuthFailureException               |
+| Остальные ошибки           | ClientFailureException             |
 
 HTTP клиент
 -----
@@ -204,7 +219,9 @@ $webHookData = new MyWebHookData($headers, $data);
 
 ### Доступные типы сообщений
 
-| Модель                     | Экземпляр класса                   | 
-|----------------------------|------------------------------------|
-| Оплаченный платеж  | WebHookPaid |
-| Просроченный платеж | WebHookExpired |
+| Модель                           | Экземпляр класса                   | 
+|----------------------------------|------------------------------------|
+| Оплаченный платёж                | WebHookPaidMessage                 |
+| Просроченный платёж              | WebHookExpiredMessage              |
+| Подтверждённый вручную платёж    | WebHookPaidManuallyMessage         |
+| Отменённый пользователем платёж  | WebHookCancelledMessage            |

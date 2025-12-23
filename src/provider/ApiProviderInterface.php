@@ -8,11 +8,13 @@
 
 namespace cryptoscan\provider;
 
+use cryptoscan\command\InvoiceConfirm;
 use cryptoscan\command\InvoiceCreate;
 use cryptoscan\command\WidgetCreate;
 use cryptoscan\contract\CurrencyRateListInterface;
 use cryptoscan\contract\CurrencyRateStatusInterface;
 use cryptoscan\contract\InvoiceCreatedInterface;
+use cryptoscan\contract\InvoiceDetailedInterface;
 use cryptoscan\contract\InvoiceListInterface;
 use cryptoscan\contract\UserDetailInterface;
 use cryptoscan\contract\WidgetCreatedInterface;
@@ -45,7 +47,7 @@ interface ApiProviderInterface extends ProviderInterface
      * Просмотр инвойса
      *
      * @param int $id
-     * @return WidgetCreatedInterface
+     * @return InvoiceDetailedInterface
      */
     public function invoiceDetail($id);
 
@@ -56,6 +58,14 @@ interface ApiProviderInterface extends ProviderInterface
      * @return InvoiceListInterface
      */
     public function invoiceSearch($query);
+
+    /**
+     * Ручное подтверждение платежа
+     *
+     * @param InvoiceConfirm $command
+     * @return InvoiceDetailedInterface
+     */
+    public function invoiceConfirm(InvoiceConfirm $command);
 
     /**
      * Информация по пользователю

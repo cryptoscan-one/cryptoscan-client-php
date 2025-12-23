@@ -54,14 +54,14 @@ interface InvoiceDetailedInterface
     /**
      * Итоговая сумма к оплате
      *
-     * @return float
+     * @return float|null
      */
     public function getFinalAmount();
 
     /**
      * Кошелёк, куда нужно произвести оплату
      *
-     * @return string
+     * @return string|null
      */
     public function getWallet();
 
@@ -118,4 +118,18 @@ interface InvoiceDetailedInterface
      * @return int
      */
     public function getExpireAt();
+
+    /**
+     * Криптовалюта оплаты
+     *
+     * @return string|null
+     */
+    public function getCryptocurrency();
+
+    /**
+     * Сеть (blockchain) оплаты
+     *
+     * @return string|null
+     */
+    public function getNetwork();
 }

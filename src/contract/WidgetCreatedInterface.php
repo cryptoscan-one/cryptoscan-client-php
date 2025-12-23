@@ -34,14 +34,14 @@ interface WidgetCreatedInterface
     /**
      * Итоговая сумма к оплате
      *
-     * @return string
+     * @return string|null
      */
     public function getFinalAmount();
 
     /**
      * Кошелёк для оплаты
      *
-     * @return string
+     * @return string|null
      */
     public function getWallet();
 
@@ -58,4 +58,18 @@ interface WidgetCreatedInterface
      * @return string
      */
     public function getWidgetUrl();
+
+    /**
+     * Криптовалюта оплаты
+     *
+     * @return string|null
+     */
+    public function getCryptocurrency();
+
+    /**
+     * Сеть (blockchain) оплаты
+     *
+     * @return string|null
+     */
+    public function getNetwork();
 }

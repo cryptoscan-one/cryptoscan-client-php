@@ -2,6 +2,7 @@
 
 namespace cryptoscan;
 
+use cryptoscan\command\InvoiceConfirm;
 use cryptoscan\command\InvoiceCreate;
 use cryptoscan\command\WidgetCreate;
 use cryptoscan\contract\CurrencyRateListInterface;
@@ -25,6 +26,7 @@ use cryptoscan\provider\ApiProviderInterface;
  * @method WidgetCreatedInterface widgetCreate(WidgetCreate $command) Создание Виджета для Инвойса
  * @method InvoiceDetailedInterface invoiceDetail(int $id) Просмотр Инвойса
  * @method InvoiceListInterface invoiceSearch($query) Поиск Инвойса
+ * @method InvoiceDetailedInterface invoiceConfirm(InvoiceConfirm $command) Ручное подтверждение Инвойса
  * @method UserDetailInterface userDetail() Просмотр информации о пользователе
  * @method CurrencyRateListInterface currencyRate() Поддерживаемые валюты
  * @method CurrencyRateStatusInterface currencyRateStatus(string $currency) Проверка доступности валюты
@@ -74,6 +76,7 @@ class CryptoScanClient
     /**
      * Установка провайдера данных
      *
+     * @param ApiProviderInterface|null $provider
      * @return void
      */
     private function setProvider(ApiProviderInterface $provider = null)
