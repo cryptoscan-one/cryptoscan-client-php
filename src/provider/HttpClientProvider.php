@@ -2,6 +2,7 @@
 
 namespace cryptoscan\provider;
 
+use cryptoscan\command\InvoiceConfirm;
 use cryptoscan\command\InvoiceCreate;
 use cryptoscan\command\WidgetCreate;
 use cryptoscan\contract\AuthCredentialsInterface;
@@ -79,6 +80,17 @@ class HttpClientProvider implements ApiProviderInterface
         $response = $this->safeRequest($request);
 
         return HttpMessageFactory::invoiceList($response);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function invoiceConfirm(InvoiceConfirm $command)
+    {
+        $request = HttpMessageFactory::invoiceConfirm($command);
+        $response = $this->safeRequest($request);
+
+        return HttpMessageFactory::invoiceConfirmed($response);
     }
 
     /**

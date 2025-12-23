@@ -19,7 +19,7 @@ class InvoiceListItemResponse extends BaseObject implements InvoiceListItemInter
     protected $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $wallet;
 
@@ -39,7 +39,7 @@ class InvoiceListItemResponse extends BaseObject implements InvoiceListItemInter
     protected $requestedAmount;
 
     /**
-     * @var float
+     * @var float|null
      */
     protected $finalAmount;
 
@@ -72,6 +72,16 @@ class InvoiceListItemResponse extends BaseObject implements InvoiceListItemInter
      * @var int
      */
     public $expireAt;
+
+    /**
+     * @var string|null
+     */
+    protected $cryptocurrency;
+
+    /**
+     * @var string|null
+     */
+    protected $network;
 
     /**
      * @inheritDoc
@@ -167,5 +177,21 @@ class InvoiceListItemResponse extends BaseObject implements InvoiceListItemInter
     public function getFinalAmount()
     {
         return $this->finalAmount;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCryptocurrency()
+    {
+        return $this->cryptocurrency;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNetwork()
+    {
+        return $this->network;
     }
 }

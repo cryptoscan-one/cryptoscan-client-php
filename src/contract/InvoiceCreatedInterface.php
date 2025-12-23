@@ -51,4 +51,18 @@ interface InvoiceCreatedInterface
      * @return int
      */
     public function getExpireAt();
+
+    /**
+     * Криптовалюта оплаты
+     *
+     * @return string
+     */
+    public function getCryptocurrency();
+
+    /**
+     * Сеть (blockchain) оплаты
+     *
+     * @return string
+     */
+    public function getNetwork();
 }

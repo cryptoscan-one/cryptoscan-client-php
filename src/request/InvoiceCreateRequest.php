@@ -58,6 +58,8 @@ class InvoiceCreateRequest implements HttpRequestInterface
                 null,
             "client_reference_id" => $command->getClientReferenceId(),
             "currency" => $command->getCurrency(),
+            "cryptocurrency" => $command->getCryptocurrency(),
+            "network" => $command->getNetwork(),
         ];
     }
 }

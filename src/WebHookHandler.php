@@ -46,6 +46,7 @@ class WebHookHandler
     }
 
     /**
+     * @param WebHookDataInterface $request
      * @return WebHookMessage
      */
     public function handle(WebHookDataInterface $request)
@@ -58,6 +59,7 @@ class WebHookHandler
     /**
      * Установка провайдера данных
      *
+     * @param WebHookProviderInterface|null $provider
      * @return void
      */
     private function setProvider(WebHookProviderInterface $provider = null)
