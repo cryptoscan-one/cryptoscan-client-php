@@ -135,29 +135,29 @@ $result = $client->currencyRateStatus('EUR');
 Данные ответа
 -----
 
-| Модель                          | Экземпляр класса                   | 
-|---------------------------------|------------------------------------|
-| Созданный инвойс                | InvoiceCreatedInterface            |
-| Созданный виджет                | WidgetCreatedInterface             |
-| Детальная информация по инвойсу | InvoiceDetailedInterface           |
-| Список инвойсов                 | InvoiceListInterface               |
-| Подтверждённый вручную инвойс   | InvoiceDetailedInterface           |
-| Информация по пользователю      | UserDetailInterface                |
-| Поддерживаемые валюты           | CurrencyRateListInterface          |
-| Проверка доступности валюты     | CurrencyRateStatusInterface        |
+| Модель                          | Экземпляр класса            | 
+|---------------------------------|-----------------------------|
+| Созданный инвойс                | InvoiceCreatedInterface     |
+| Созданный виджет                | WidgetCreatedInterface      |
+| Детальная информация по инвойсу | InvoiceDetailedInterface    |
+| Список инвойсов                 | InvoiceListInterface        |
+| Подтверждённый вручную инвойс   | InvoiceDetailedInterface    |
+| Информация по пользователю      | UserDetailInterface         |
+| Поддерживаемые валюты           | CurrencyRateListInterface   |
+| Проверка доступности валюты     | CurrencyRateStatusInterface |
 
 Обработка ошибок
 -----
 
 ### Исключения
 
-| Модель                     | Экземпляр класса                   | 
-|----------------------------|------------------------------------|
-| Интерфейс всех исключений  | ClientExceptionInterface           |
-| Ошибка передаваемых данных | InvalidDataException               |
-| Не корректные данные       | InvalidArgumentException           |
-| Ошибка авторизации         | AuthFailureException               |
-| Остальные ошибки           | ClientFailureException             |
+| Модель                     | Экземпляр класса         | 
+|----------------------------|--------------------------|
+| Интерфейс всех исключений  | ClientExceptionInterface |
+| Ошибка передаваемых данных | InvalidDataException     |
+| Некорректные данные        | InvalidArgumentException |
+| Ошибка авторизации         | AuthFailureException     |
+| Остальные ошибки           | ClientFailureException   |
 
 HTTP клиент
 -----
@@ -219,9 +219,9 @@ $webHookData = new MyWebHookData($headers, $data);
 
 ### Доступные типы сообщений
 
-| Модель                           | Экземпляр класса                   | 
-|----------------------------------|------------------------------------|
-| Оплаченный платёж                | WebHookPaidMessage                 |
-| Просроченный платёж              | WebHookExpiredMessage              |
-| Подтверждённый вручную платёж    | WebHookPaidManuallyMessage         |
-| Отменённый пользователем платёж  | WebHookCancelledMessage            |
+| Модель                          | Экземпляр класса           | 
+|---------------------------------|----------------------------|
+| Оплаченный платёж               | WebHookPaidMessage         |
+| Просроченный платёж             | WebHookExpiredMessage      |
+| Подтверждённый вручную платёж   | WebHookPaidManuallyMessage |
+| Отменённый пользователем платёж | WebHookCancelledMessage    |

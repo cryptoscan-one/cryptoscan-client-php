@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: itily
- * Date: 05.06.2023
- * Time: 13:52
- */
 
 namespace cryptoscan\webhook;
 
@@ -96,6 +90,16 @@ abstract class WebHookMessage extends BaseObject
     protected $metadata;
 
     /**
+     * @var string|null
+     */
+    protected $cryptocurrency;
+
+    /**
+     * @var string|null
+     */
+    protected $network;
+
+    /**
      * @var int
      */
     protected $createdAt;
@@ -159,6 +163,26 @@ abstract class WebHookMessage extends BaseObject
     public function getMetadata()
     {
         return $this->metadata;
+    }
+
+    /**
+     * Криптовалюта оплаты
+     *
+     * @return string|null
+     */
+    public function getCryptocurrency()
+    {
+        return $this->cryptocurrency;
+    }
+
+    /**
+     * Сеть (blockchain) оплаты
+     *
+     * @return string|null
+     */
+    public function getNetwork()
+    {
+        return $this->network;
     }
 
     /**

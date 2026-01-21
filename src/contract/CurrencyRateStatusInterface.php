@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: itily
- * Date: 04.06.2023
- * Time: 20:49
- */
 
 namespace cryptoscan\contract;
 
@@ -16,13 +10,13 @@ namespace cryptoscan\contract;
  */
 interface CurrencyRateStatusInterface
 {
-    /** @var string  */
+    /** @var string */
     const STATUS_ENABLED = "enabled";
 
-    /** @var string  */
+    /** @var string */
     const STATUS_DISABLED = "disabled";
 
-    /** @var string  */
+    /** @var string */
     const STATUS_NOT_SUPPORTED = "not_supported";
 
     /**

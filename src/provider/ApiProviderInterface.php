@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: itily
- * Date: 07.06.2023
- * Time: 9:59
- */
 
 namespace cryptoscan\provider;
 

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: itily
- * Date: 06.06.2023
- * Time: 18:48
- */
 
 use cryptoscan\command\InvoiceCreate;
 use cryptoscan\CryptoScanClient;

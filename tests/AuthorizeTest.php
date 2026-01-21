@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: itily
- * Date: 07.06.2023
- * Time: 11:39
- */
-
 
 use cryptoscan\entity\Authorize;
 use cryptoscan\factory\AuthFactory;
