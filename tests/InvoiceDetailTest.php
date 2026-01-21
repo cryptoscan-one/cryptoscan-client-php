@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: itily
- * Date: 04.06.2023
- * Time: 17:38
- */
-
 
 use cryptoscan\CryptoScanClient;
 use cryptoscan\factory\AuthFactory;

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: itily
- * Date: 05.06.2023
- * Time: 12:22
- */
 
 namespace cryptoscan\factory;
 
@@ -39,7 +33,7 @@ class ResponseExceptionFactory
      */
     public static function createByResponse(
         ResponseInterface $response,
-        FailureInterface $failure
+        FailureInterface  $failure
     )
     {
         switch ($response->getStatusCode()) {

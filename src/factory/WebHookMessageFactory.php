@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: itily
- * Date: 05.06.2023
- * Time: 14:00
- */
 
 namespace cryptoscan\factory;
 
